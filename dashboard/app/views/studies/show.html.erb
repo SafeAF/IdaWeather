@@ -21,8 +21,8 @@
   <ul>
     <% @study.graphs.each do |graph| %>
       <li>
-        <%= graph.name %>
-        
+        <h2><%= graph.name %></h2>
+          <p><%= graph.dependent_var %></p>
           <%= link_to "Edit Graph", edit_study_graph_path(@study, graph) %>
         <p><%= graph.description %></p>
         <%= link_to "Destroy", study_graph_path(@study, graph), data: { turbo_method: :delete }, class: "" %>

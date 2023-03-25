@@ -61,7 +61,7 @@ class GraphsController < ApplicationController
         @graph.coords = res.body #store the coords as JSON dont parse until display
         @graph.save
 
-        format.html { redirect_to graph_url(@graph), notice: "Graph was successfully updated." }
+        format.html { redirect_to study_url(@study), notice: "Graph was successfully updated." }
         format.json { render :show, status: :ok, location: @graph }
       else
         format.html { render :edit, status: :unprocessable_entity }
