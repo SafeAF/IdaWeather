@@ -25,7 +25,19 @@
         
         <p><%= graph.description %></p>
         <%= link_to "Destroy", study_graph_path(@study, graph), data: { turbo_method: :delete }, class: "" %>
+<%= 
 
+coords = JSON.parse(graph.coords)
+@foo = Vega.lite
+  .data(coords)
+  .mark(type: "bar", tooltip: true)
+  .encoding(
+    x: {field: "x", type: "nominal"},
+    y: {field: "y", type: "quantitative"}
+  )
+
+
+%>
 
       </li>
     <% end %>

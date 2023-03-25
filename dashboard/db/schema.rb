@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_25_163025) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_25_173500) do
   create_table "graphs", force: :cascade do |t|
     t.string "name", default: ""
     t.text "description", default: ""
@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_163025) do
     t.integer "study_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "coords"
     t.index ["study_id"], name: "index_graphs_on_study_id"
   end
 

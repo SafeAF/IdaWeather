@@ -1,6 +1,12 @@
+require 'json'
+require 'net/http'
+
 class GraphsController < ApplicationController
   before_action :set_graph, only: %i[ show edit update destroy ]
   before_action :set_study
+  
+  @@api = "http://localhost:4567/coordinates"
+
   # GET /graphs or /graphs.json
   def index
     @graphs = Graph.all
@@ -19,24 +25,18 @@ class GraphsController < ApplicationController
   def edit
   end
 
-  # POST /graphs or /graphs.json
-  # def create
-  #   @graph = Graph.new(graph_params)
-  #   @graph.study_id = 
-  #   respond_to do |format|
-  #     if @graph.save
-  #       format.html { redirect_to graph_url(@graph), notice: "Graph was successfully created." }
-  #       format.json { render :show, status: :created, location: @graph }
-  #     else
-
-  #     end
-  #   end
-  # end
 
   
   
   def create
     @graph = @study.graphs.new(graph_params)
+    @graph.save
+    json_graph = @graph.to_json
+    uri = URI(@@api)
+    res = Net::HTTP.post_form(uri, {'graph' => json_graph})
+    # @coords = JSON.parse res.body
+    # @graph.coords = @coords
+    @graph.coords = res.body
     @graph.save
 
     if @graph.save
