@@ -10,7 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_25_160930) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_25_163025) do
+  create_table "graphs", force: :cascade do |t|
+    t.string "name", default: ""
+    t.text "description", default: ""
+    t.integer "start_year", default: 0
+    t.integer "end_year", default: 0
+    t.integer "year", default: 0
+    t.boolean "range", default: false
+    t.integer "month", default: 0
+    t.integer "day", default: 0
+    t.integer "hour", default: 0
+    t.string "independent_var", default: ""
+    t.string "dependent_var", default: ""
+    t.string "chart_type", default: ""
+    t.string "category", default: ""
+    t.string "location", default: ""
+    t.string "lat", default: ""
+    t.string "lon", default: ""
+    t.string "function", default: ""
+    t.integer "study_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["study_id"], name: "index_graphs_on_study_id"
+  end
+
   create_table "studies", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -33,5 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_160930) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "graphs", "studies"
   add_foreign_key "studies", "users"
 end

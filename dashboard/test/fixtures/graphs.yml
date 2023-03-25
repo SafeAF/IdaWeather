@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  start_year: 1
+  end_year: 1
+  year: 1
+  range: false
+  month: 1
+  day: 1
+  hour: 1
+  independent_var: MyString
+  dependent_var: MyString
+  chart_type: MyString
+  category: MyString
+  location: MyString
+  lat: MyString
+  lon: MyString
+  function: MyString
+  study: one
+
+two:
+  name: MyString
+  description: MyText
+  start_year: 1
+  end_year: 1
+  year: 1
+  range: false
+  month: 1
+  day: 1
+  hour: 1
+  independent_var: MyString
+  dependent_var: MyString
+  chart_type: MyString
+  category: MyString
+  location: MyString
+  lat: MyString
+  lon: MyString
+  function: MyString
+  study: two

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Graphs</h1>
+
+<div id="graphs">
+  <% @graphs.each do |graph| %>
+    <%= render graph %>
+    <p>
+      <%= link_to "Show this graph", graph %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New graph", new_graph_path %>

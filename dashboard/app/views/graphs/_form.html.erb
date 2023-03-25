@@ -1,0 +1,107 @@
+<%= form_with(model: graph) do |form| %>
+  <% if graph.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(graph.errors.count, "error") %> prohibited this graph from being saved:</h2>
+
+      <ul>
+        <% graph.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :start_year, style: "display: block" %>
+    <%= form.number_field :start_year %>
+  </div>
+
+  <div>
+    <%= form.label :end_year, style: "display: block" %>
+    <%= form.number_field :end_year %>
+  </div>
+
+  <div>
+    <%= form.label :year, style: "display: block" %>
+    <%= form.number_field :year %>
+  </div>
+
+  <div>
+    <%= form.label :range, style: "display: block" %>
+    <%= form.check_box :range %>
+  </div>
+
+  <div>
+    <%= form.label :month, style: "display: block" %>
+    <%= form.number_field :month %>
+  </div>
+
+  <div>
+    <%= form.label :day, style: "display: block" %>
+    <%= form.number_field :day %>
+  </div>
+
+  <div>
+    <%= form.label :hour, style: "display: block" %>
+    <%= form.number_field :hour %>
+  </div>
+
+  <div>
+    <%= form.label :independent_var, style: "display: block" %>
+    <%= form.text_field :independent_var %>
+  </div>
+
+  <div>
+    <%= form.label :dependent_var, style: "display: block" %>
+    <%= form.text_field :dependent_var %>
+  </div>
+
+  <div>
+    <%= form.label :chart_type, style: "display: block" %>
+    <%= form.text_field :chart_type %>
+  </div>
+
+  <div>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.text_field :category %>
+  </div>
+
+  <div>
+    <%= form.label :location, style: "display: block" %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div>
+    <%= form.label :lat, style: "display: block" %>
+    <%= form.text_field :lat %>
+  </div>
+
+  <div>
+    <%= form.label :lon, style: "display: block" %>
+    <%= form.text_field :lon %>
+  </div>
+
+  <div>
+    <%= form.label :function, style: "display: block" %>
+    <%= form.text_field :function %>
+  </div>
+
+  <div>
+    <%= form.label :study_id, style: "display: block" %>
+    <%= form.text_field :study_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
