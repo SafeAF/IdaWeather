@@ -3,22 +3,29 @@
 
 
 
+<div class="row">
+  <div class="col-8">
+  </div>
+
+    <div class="col-4">
+  <%= link_to '', new_study_graph_path(@study), class: "fa-solid fa-chart-line" %>
+
+  <%= link_to "", edit_study_path(@study), class: "fa-solid fa-sliders" %> |
+  <%= link_to "", studies_path, class: "fa-solid fa-arrow-left" %>
+
+  <%= link_to "", @study, data: { turbo_method: :delete }, class: "fa-solid fa-circle-xmark" %>
+
+  </div>
+
+</div>
 
 <div class="row">
-  <div class="col-8 ">
+  <div class="col-12 ">
 <h1><%= @study.name %></h1>
 
 <p><%= @study.description %></p>
   </div>
-  <div class="col-4">
-  <%= link_to 'New Graph', new_study_graph_path(@study) %>
 
-  <%= link_to "Edit this study", edit_study_path(@study) %> |
-  <%= link_to "Back to studies", studies_path %>
-
-  <%= button_to "Destroy this study", @study, method: :delete %>
-
-  </div>
 
 </div>
 
@@ -55,8 +62,8 @@ coords = JSON.parse(graph.coords)
                   <h2><%= graph.name %></h2>
           <p><%= graph.location %> </p>
           <p><%= graph.dependent_var %></p>
-       <i class="fa-solid fa-user-secret"></i>
-          <%= link_to "Edit Graph", edit_study_graph_path(@study, graph) %>
+
+          <%= link_to '', edit_study_graph_path(@study, graph), class: "fa-solid fa-sliders" %>
        
         <%= link_to "Destroy", study_graph_path(@study, graph), data: { turbo_method: :delete }, class: "" %>
 
