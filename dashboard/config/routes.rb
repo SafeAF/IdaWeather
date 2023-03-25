@@ -6,11 +6,13 @@ Rails.application.routes.draw do
 
 
   resources :studies do
-    resources :graphs, only: [:new, :create, :destroy]
+    resources :graphs, only: [:new, :create, :destroy, :edit, :update]
   end
 
   resources :graphs
   resources :studies
+
+  
 
   # Defines the root path route ("/")
   # root "articles#index"

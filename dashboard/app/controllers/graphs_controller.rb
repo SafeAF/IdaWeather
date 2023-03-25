@@ -23,6 +23,7 @@ class GraphsController < ApplicationController
 
   # GET /graphs/1/edit
   def edit
+    @graph = Graph.find(params[:id])
   end
 
 
@@ -34,9 +35,7 @@ class GraphsController < ApplicationController
     json_graph = @graph.to_json
     uri = URI(@@api)
     res = Net::HTTP.post_form(uri, {'graph' => json_graph})
-    # @coords = JSON.parse res.body
-    # @graph.coords = @coords
-    @graph.coords = res.body
+    @graph.coords = res.body #store the coords as JSON dont parse until display
     @graph.save
 
     if @graph.save
@@ -55,6 +54,13 @@ class GraphsController < ApplicationController
   def update
     respond_to do |format|
       if @graph.update(graph_params)
+        
+        json_graph = @graph.to_json
+        uri = URI(@@api)
+        res = Net::HTTP.post_form(uri, {'graph' => json_graph})
+        @graph.coords = res.body #store the coords as JSON dont parse until display
+        @graph.save
+
         format.html { redirect_to graph_url(@graph), notice: "Graph was successfully updated." }
         format.json { render :show, status: :ok, location: @graph }
       else
@@ -83,14 +89,6 @@ class GraphsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def graph_params
       params.require(:graph).permit(:name, :description, :start_year, :end_year, :year, :range, :month, :day, :hour, :independent_var, :dependent_var, :chart_type, :category, :location, :lat, :lon, :function, :study_id)
-    end
-
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
-  
-    def comment_params
-      params.require(:comment).permit(:body)
     end
   
     def set_study
