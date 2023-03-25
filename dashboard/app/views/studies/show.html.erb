@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-10"></div>
 
-    <div class="col">
+    <div class="col d-flex justify-content-center">
   <%= link_to '', new_study_graph_path(@study), class: "fa-solid fa-chart-line" %>
 
   <%= link_to "", edit_study_path(@study), class: "fa-solid fa-sliders" %> |
@@ -39,7 +39,7 @@
     <% @study.graphs.each do |graph| %>
       <div class="row mt-5">
 
-        <div class="col d-flex justify-content-center">
+        <div class="col d-flex justify-content-center ">
      <h1><%= graph.name %></h1>
 
         </div>
@@ -72,18 +72,31 @@ coords = JSON.parse(graph.coords)
       </div>
 
       <div class="row">
-        <div class="col-4">
-        <p><%= graph.name %></p>
-          <%= graph.dependent_var%>
-                  <h2><%= graph.name %></h2>
-          <p><%= graph.location %> </p>
-          <p><%= graph.dependent_var %></p>
+        <div class="col-10">
+        <i class="fa-solid fa-location-crosshairs"></i> <%= graph.location %>, ID
+        </div>
 
-          <%= link_to '', edit_study_graph_path(@study, graph), class: "fa-solid fa-sliders" %>
+        <div class="col-2 d-flex justify-content-center">
+
+       <%= link_to '', edit_study_graph_path(@study, graph), class: "fa-solid fa-sliders" %>
        
         <%= link_to "", study_graph_path(@study, graph), data: { turbo_method: :delete }, class: "fa-solid fa-circle-xmark", confirm: "Are you sure?" %>
 
+        </div>
 
+      </div>
+
+
+
+      <div class="row mt-3">
+        <div class="col-4">
+     
+
+<i class="fa-brands fa-wpexplorer"></i> <%= graph.dependent_var.capitalize %>
+
+<i class="fa-solid fa-square-root-variable"></i> <%= graph.function.capitalize %>
+
+   <i class="fa-solid fa-box-archive"></i> <%= graph.category.truncate(20) %>
         </div>
 
         <div class="col-8">
