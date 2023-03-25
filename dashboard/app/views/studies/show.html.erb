@@ -25,15 +25,21 @@
 
 
 <% if @study.graphs.any? %>
-  <ul>
+  
     <% @study.graphs.each do |graph| %>
-      <li>
+      <div class="row">
+        <div class="col-1">
         <h2><%= graph.name %></h2>
           <p><%= graph.location %> </p>
           <p><%= graph.dependent_var %></p>
           <%= link_to "Edit Graph", edit_study_graph_path(@study, graph) %>
         <p><%= graph.description %></p>
         <%= link_to "Destroy", study_graph_path(@study, graph), data: { turbo_method: :delete }, class: "" %>
+
+          </div>
+
+          <div class="col-11">
+
 <%= 
 
 coords = JSON.parse(graph.coords)
@@ -47,10 +53,10 @@ coords = JSON.parse(graph.coords)
 
 
 %>
-
-      </li>
+        </div>
+      </div>
     <% end %>
-  </ul>
+ 
 <% else %>
   <p>No graphs found.</p>
 <% end %>
