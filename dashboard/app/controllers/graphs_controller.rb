@@ -28,35 +28,26 @@ class GraphsController < ApplicationController
   #       format.html { redirect_to graph_url(@graph), notice: "Graph was successfully created." }
   #       format.json { render :show, status: :created, location: @graph }
   #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @graph.errors, status: :unprocessable_entity }
+
   #     end
   #   end
   # end
 
   
   
-    def create
-      @graph = @study.graphs.new(graph_params)
-      @graph.save
+  def create
+    @graph = @study.graphs.new(graph_params)
+    @graph.save
+
+    if @graph.save
+      redirect_to study_path(@study), notice: 'Graph was successfully created.'
+    else
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @graph.errors, status: :unprocessable_entity }
+    end
+  end
 
 
-      # @study = current_user.studies.find(params[:study_id])
-      # @graph = @study.graphs.build(graph_params)
-  
-      if @graph.save
-        redirect_to study_path(@study), notice: 'Graph was successfully created.'
-      else
-        render :new
-      end
-    end
-  
-    private
-  
-    def graph_params
-      params.require(:graph).permit(:title, :description, :image)
-    end
-  
 
 
 

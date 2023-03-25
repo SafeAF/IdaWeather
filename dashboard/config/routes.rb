@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
 
   resources :studies do
-    resources :graphs, only: [:new, :create]
+    resources :graphs, only: [:new, :create, :destroy]
   end
 
   resources :graphs
