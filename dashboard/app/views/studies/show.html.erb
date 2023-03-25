@@ -5,12 +5,12 @@
 
 
 <div class="row">
-  <div class="col-10 ">
+  <div class="col-8 ">
 <h1><%= @study.name %></h1>
 
 <p><%= @study.description %></p>
   </div>
-  <div class="col-2">
+  <div class="col-4">
   <%= link_to 'New Graph', new_study_graph_path(@study) %>
 
   <%= link_to "Edit this study", edit_study_path(@study) %> |
@@ -28,17 +28,9 @@
   
     <% @study.graphs.each do |graph| %>
       <div class="row">
-        <div class="col-1">
-        <h2><%= graph.name %></h2>
-          <p><%= graph.location %> </p>
-          <p><%= graph.dependent_var %></p>
-          <%= link_to "Edit Graph", edit_study_graph_path(@study, graph) %>
-       
-        <%= link_to "Destroy", study_graph_path(@study, graph), data: { turbo_method: :delete }, class: "" %>
+     
 
-          </div>
-
-          <div class="col-11">
+          <div class="col-12">
 
 <%= 
 
@@ -60,6 +52,14 @@ coords = JSON.parse(graph.coords)
         <div class="col-4">
         <p><%= graph.name %></p>
           <%= graph.dependent_var%>
+                  <h2><%= graph.name %></h2>
+          <p><%= graph.location %> </p>
+          <p><%= graph.dependent_var %></p>
+       <i class="fa-solid fa-user-secret"></i>
+          <%= link_to "Edit Graph", edit_study_graph_path(@study, graph) %>
+       
+        <%= link_to "Destroy", study_graph_path(@study, graph), data: { turbo_method: :delete }, class: "" %>
+
         </div>
 
         <div class="col-8">
