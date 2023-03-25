@@ -1,4 +1,6 @@
-<%= form_with(model: graph) do |form| %>
+<%= form_with(model: graph, url: [@study, graph]) do |form| %>
+
+
   <% if graph.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(graph.errors.count, "error") %> prohibited this graph from being saved:</h2>

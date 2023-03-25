@@ -8,3 +8,27 @@
 
   <%= button_to "Destroy this study", @study, method: :delete %>
 </div>
+
+
+
+<h1><%= @study.name %></h1>
+
+<p><%= @study.description %></p>
+
+<h2>Graphs</h2>
+
+<% if @study.graphs.any? %>
+  <ul>
+    <% @study.graphs.each do |graph| %>
+      <li>
+        <%= graph.name %>
+        
+        <p><%= graph.description %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No graphs found.</p>
+<% end %>
+
+<%= link_to 'New Graph', new_study_graph_path(@study) %>
