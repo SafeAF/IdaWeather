@@ -23,11 +23,81 @@
     </div>
   </div>
 
-  <div class="mb-3">
+<div class="row">
+ <div class="col-6">
+    <%= form.label :location, class: "form-label" %>
+    <%= form.select :location, ["Buhl",                    
+ "Burley",                  
+ "Caldwell",                
+ "Cour d'Alene",            
+ "Emmett",                  
+ "Gannet",
+ "Gooding",
+ "Grangeville",
+ "Idaho Falls",
+ "Ketchum",
+ "Minidoka",
+ "Moscow",
+ "Mountain Home",
+ "Mountains West of Jackpot",
+ "Murtaugh",
+ "Oakley",
+ "Payette",
+ "Pike Mountain",
+ "Pocatello",
+ "Salmon",
+ "Twin Falls"] 
+ %>
+  </div>
+
+
+  <div class="col-6">
+    <%= form.label :dependent_var, class: "form-label" %>
+    <%= form.select :dependent_var, [ "temperature",                                                         
+ "dewpoint_temperature",                                                
+ "soil_temperature_level_1",                                            
+ "soil_temperature_level_2",                                            
+ "soil_temperature_level_3",                                            
+ "soil_temperature_level_4",
+ "surface_thermal_radiation",
+ "surface_solar_radiation",
+ "direct_normal_solar_radiation",
+ "surface_diffuse_solar_radiation",
+ "relative_humidity",
+ "surface_pressure",
+ "mean_sea_level_pressure",
+ "total_cloud_cover",
+ "total_precipitation",
+ "snowfall",
+ "snow_depth",
+ "snow_density",
+ "volumetric_soil_water_layer_1",
+ "volumetric_soil_water_layer_2",
+ "volumetric_soil_water_layer_3",
+ "volumetric_soil_water_layer_4",
+ "wind_speed",
+ "wind_direction",
+ "10m_wind_gust",
+ "100m_wind_speed",
+ "100m_wind_direction"]
+         %>
+  </div>
+
+
+</div>
+
+
+
+
+  <div class="mb-3 mt-3">
     <%= form.label :description, class: "form-label" %>
     <%= form.text_area :description, class: "form-control" %>
   </div>
 
+<div class="col-6">
+  <%= form.label :category, class: "form-label" %>
+  <%= form.select :category, ["Range_across_years", "Compare_one_month_across_years", "Monthly_for_one_year", "Hourly_for_one_month_in_a_single_year"], class: "form-select" %>
+</div>
 
 
 <div id="year-fields">
@@ -71,37 +141,7 @@
 
 
 
-  <div>
-    <%= form.label :dependent_var, style: "display: block" %>
-    <%= form.select :dependent_var, [ "temperature",                                                         
- "dewpoint_temperature",                                                
- "soil_temperature_level_1",                                            
- "soil_temperature_level_2",                                            
- "soil_temperature_level_3",                                            
- "soil_temperature_level_4",
- "surface_thermal_radiation",
- "surface_solar_radiation",
- "direct_normal_solar_radiation",
- "surface_diffuse_solar_radiation",
- "relative_humidity",
- "surface_pressure",
- "mean_sea_level_pressure",
- "total_cloud_cover",
- "total_precipitation",
- "snowfall",
- "snow_depth",
- "snow_density",
- "volumetric_soil_water_layer_1",
- "volumetric_soil_water_layer_2",
- "volumetric_soil_water_layer_3",
- "volumetric_soil_water_layer_4",
- "wind_speed",
- "wind_direction",
- "10m_wind_gust",
- "100m_wind_speed",
- "100m_wind_direction"]
-         %>
-  </div>
+
 
 <div class="row">
 <div class="col-3">
@@ -114,38 +154,9 @@
   <%= form.select :chart_type, ["line", "scatter", "bar", "area", "pie"], class: "form-select" %>
 </div>
 
-<div class="col-6">
-  <%= form.label :category, class: "form-label" %>
-  <%= form.select :category, ["Range_across_years", "Compare_one_month_across_years", "Monthly_for_one_year", "Hourly_for_one_month_in_a_single_year"], class: "form-select" %>
-</div>
-</div>
 
 
-  <div>
-    <%= form.label :location, style: "display: block" %>
-    <%= form.select :location, ["Buhl",                    
- "Burley",                  
- "Caldwell",                
- "Cour d'Alene",            
- "Emmett",                  
- "Gannet",
- "Gooding",
- "Grangeville",
- "Idaho Falls",
- "Ketchum",
- "Minidoka",
- "Moscow",
- "Mountain Home",
- "Mountains West of Jackpot",
- "Murtaugh",
- "Oakley",
- "Payette",
- "Pike Mountain",
- "Pocatello",
- "Salmon",
- "Twin Falls"] 
- %>
-  </div>
+
 
 
 
