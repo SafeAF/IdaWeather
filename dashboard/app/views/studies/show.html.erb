@@ -1,18 +1,16 @@
 <div class="container">
-<p style="color: green"><%= notice %></p>
-
 
 
 <div class="row">
     <div class="col-10"></div>
 
     <div class="col d-flex justify-content-center">
-  <%= link_to '', new_study_graph_path(@study), class: "fa-solid fa-chart-line" %>
+  <%= link_to '', new_study_graph_path(@study), class: "fa-solid fa-chart-line", title: 'New Graph' %>
 
-  <%= link_to "", edit_study_path(@study), class: "fa-solid fa-sliders" %> |
-  <%= link_to "", studies_path, class: "fa-solid fa-arrow-left" %>
+  <%= link_to "", edit_study_path(@study), class: "fa-solid fa-sliders", title: "Edit Study" %> |
+  <%= link_to "", studies_path, class: "fa-solid fa-arrow-left", title: "Back to Studies" %>
 
-  <%= link_to "", @study, data: { turbo_method: :delete }, class: "fa-solid fa-circle-xmark" %>
+  <%= link_to "", @study, data: { turbo_method: :delete }, class: "fa-solid fa-circle-xmark", title: "Delete Study" %>
 
   </div>
 
@@ -84,9 +82,9 @@ coords = JSON.parse(graph.coords)
 
         <div class="col-2 d-flex justify-content-center">
 
-       <%= link_to '', edit_study_graph_path(@study, graph), class: "fa-solid fa-sliders" %>
+       <%= link_to '', edit_study_graph_path(@study, graph), class: "fa-solid fa-sliders", title: "Edit Graph" %>
        
-        <%= link_to "", study_graph_path(@study, graph), data: { turbo_method: :delete }, class: "fa-solid fa-circle-xmark", confirm: "Are you sure?" %>
+        <%= link_to "", study_graph_path(@study, graph), data: { turbo_method: :delete }, class: "fa-solid fa-circle-xmark", confirm: "Are you sure?", title: "Delete Graph" %>
 
         </div>
 
