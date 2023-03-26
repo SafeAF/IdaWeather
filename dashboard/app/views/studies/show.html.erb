@@ -1,115 +1,83 @@
 <div class="container">
 
 
-<div class="row">
+  <div class="row">
     <div class="col-10"></div>
+      <div class="col d-flex justify-content-center">
+        <%= link_to '', new_study_graph_path(@study),
+              class: "fa-solid fa-chart-line", title: 'New Graph' %>
+        <%= link_to "", edit_study_path(@study),
+              class: "fa-solid fa-sliders", title: "Edit Study" %> |
+        <%= link_to "", studies_path,
+              class: "fa-solid fa-arrow-left", title: "Back to Studies" %>
+        <%= link_to "", @study, data: { turbo_method: :delete },
+              class: "fa-solid fa-circle-xmark", title: "Delete Study" %>
+    </div>
+  </div>
 
-    <div class="col d-flex justify-content-center">
-  <%= link_to '', new_study_graph_path(@study), class: "fa-solid fa-chart-line", title: 'New Graph' %>
-
-  <%= link_to "", edit_study_path(@study), class: "fa-solid fa-sliders", title: "Edit Study" %> |
-  <%= link_to "", studies_path, class: "fa-solid fa-arrow-left", title: "Back to Studies" %>
-
-  <%= link_to "", @study, data: { turbo_method: :delete }, class: "fa-solid fa-circle-xmark", title: "Delete Study" %>
-
+    <div class="row mt-5">
+      <div class="col-12 ">
+        <h1><%= @study.name %></h1>
+        <p><%= @study.description %></p>
+      </div>
   </div>
 
 
-</div>
+  <% if @study.graphs.any? %>
+      <% @study.graphs.each do |graph| %>
+        <div class="row mt-5">
+          <div class="col d-flex justify-content-center ">
+              <h1><%= graph.name %></h1>
+          </div>
+        </div>
 
-<div class="row mt-5">
-  <div class="col-12 ">
-<h1><%= @study.name %></h1>
+        <div class="row">
+            <div class="col-12">
+              <%= 
+              coords = JSON.parse(graph.coords)
+              @foo = Vega.lite
+                .data(coords)
+                .mark(type: "bar", tooltip: true)
+                .encoding(
+                  x: {field: "x", type: "nominal"},
+                  y: {field: "y", type: "quantitative"}
+                )
+              %>
+          </div>
+        </div>
 
-<p><%= @study.description %></p>
-  </div>
+        <div class="row">
+          <div class="col-10">
+            <i class="fa-solid fa-location-crosshairs"></i> <%= graph.location %>, ID
+            <i class="fa-brands fa-wpexplorer"></i> <%= graph.dependent_var.capitalize %>
+            <i class="fa-solid fa-square-root-variable"></i> <%= graph.function.capitalize %>
+            <i class="fa-solid fa-box-archive"></i> <%= graph.category.truncate(20) %>
+          </div>
 
+          <div class="col-2 d-flex justify-content-center">
+            <%= link_to '', edit_study_graph_path(@study, graph),
+                 class: "fa-solid fa-sliders", title: "Edit Graph" %>
+            <%= link_to "", study_graph_path(@study, graph), data: { turbo_method: :delete },
+                 class: "fa-solid fa-circle-xmark", confirm: "Are you sure?", title: "Delete Graph" %>
+          </div>
+        </div>
 
-</div>
+        <div class="row mt-3">
+          <div class="col-4">
 
+          </div>
+        </div>
 
-
-
-
-
-<% if @study.graphs.any? %>
+        <div class="row mt-3">
+          <div class="col d-flex justify-content-center ">
+            <p><%= graph.description %></p>
+          </div>
+        </div>
+      <% end %>
   
-    <% @study.graphs.each do |graph| %>
-      <div class="row mt-5">
-
-        <div class="col d-flex justify-content-center ">
-     <h1><%= graph.name %></h1>
-
-        </div>
-
-      </div>
-
-
-
-
-
-      <div class="row">
-     
-
-          <div class="col-12">
-
-<%= 
-
-coords = JSON.parse(graph.coords)
-@foo = Vega.lite
-  .data(coords)
-  .mark(type: "bar", tooltip: true)
-  .encoding(
-    x: {field: "x", type: "nominal"},
-    y: {field: "y", type: "quantitative"}
-  )
-
-
-%>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-10">
-        <i class="fa-solid fa-location-crosshairs"></i> <%= graph.location %>, ID
-          <i class="fa-brands fa-wpexplorer"></i> <%= graph.dependent_var.capitalize %>
-
-          <i class="fa-solid fa-square-root-variable"></i> <%= graph.function.capitalize %>
-
-          <i class="fa-solid fa-box-archive"></i> <%= graph.category.truncate(20) %>
-        
-        </div>
-
-        <div class="col-2 d-flex justify-content-center">
-
-       <%= link_to '', edit_study_graph_path(@study, graph), class: "fa-solid fa-sliders", title: "Edit Graph" %>
-       
-        <%= link_to "", study_graph_path(@study, graph), data: { turbo_method: :delete }, class: "fa-solid fa-circle-xmark", confirm: "Are you sure?", title: "Delete Graph" %>
-
-        </div>
-
-      </div>
-
-
-
-      <div class="row mt-3">
-        <div class="col-4">
-
-        </div>
-      </div>
-
-      <div class="row mt-3">
-
-        <div class="col d-flex justify-content-center ">
-        <p><%= graph.description %></p>
-        </div>
-
-      </div>
+      <% else %>
+        <p>No graphs found.</p>
     <% end %>
- 
-<% else %>
-  <p>No graphs found.</p>
-<% end %>
 
 
 </div>
