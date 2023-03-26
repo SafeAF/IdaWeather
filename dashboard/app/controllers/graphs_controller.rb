@@ -54,7 +54,6 @@ class GraphsController < ApplicationController
   def update
     respond_to do |format|
       if @graph.update(graph_params)
-        
         json_graph = @graph.to_json
         uri = URI(@@api)
         res = Net::HTTP.post_form(uri, {'graph' => json_graph})

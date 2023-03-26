@@ -1,0 +1,16 @@
+
+<div class="row">
+<div class="col">
+<%= link_to '', new_study_graph_path(@study),
+        class: "fa-solid fa-chart-line ", title: 'New Graph' %>
+
+<%= link_to "", edit_study_path(@study),
+        class: "fa-solid fa-sliders", title: "Edit Study" %> 
+
+<%= link_to "", studies_path,
+        class: "fa-solid fa-arrow-left", title: "Back to Studies" %>
+
+<%= link_to "", @study, data: { turbo_method: :delete },
+        class: "fa-solid fa-circle-xmark", title: "Delete Study" %>
+</div>
+</div>
