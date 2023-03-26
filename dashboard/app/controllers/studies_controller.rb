@@ -1,5 +1,6 @@
 class StudiesController < ApplicationController
   before_action :set_study, only: %i[ show edit update destroy ]
+  before_action :check_owner, only: [:edit, :update, :destroy]
 
   # GET /studies or /studies.json
   def index
@@ -58,6 +59,13 @@ class StudiesController < ApplicationController
   end
 
   private
+
+    def check_owner
+      @study = Study.find(params[:id])
+      unless current_user == @study.user
+        redirect_to studies_path, alert: "You are not authorized to perform this action."
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_study
       @study = Study.find(params[:id])

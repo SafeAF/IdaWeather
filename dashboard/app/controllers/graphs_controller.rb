@@ -4,8 +4,12 @@ require 'net/http'
 class GraphsController < ApplicationController
   before_action :set_graph, only: %i[ show edit update destroy ]
   before_action :set_study
+  before_action :check_owner, only: [:edit, :update, :destroy]
+
+
   
   @@api = "http://localhost:4567/coordinates"
+
 
   # GET /graphs or /graphs.json
   def index
@@ -80,7 +84,14 @@ class GraphsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def check_owner
+      @graph = Graph.find(params[:id])
+      unless current_user == @graph.study.user
+        redirect_to studies_path, alert: "You are not authorized to perform this action."
+      end
+    end
+  
+  # Use callbacks to share common setup or constraints between actions.
     def set_graph
       @graph = Graph.find(params[:id])
     end

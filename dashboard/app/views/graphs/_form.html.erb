@@ -1,8 +1,9 @@
-<%= form_with(model: graph, url: [@study, graph]) do |form| %>
+<div class="container">
+<%= form_with(model: graph, url: [@study, graph], class: "needs-validation", novalidate: true) do |form| %>
 
 
   <% if graph.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-danger">
       <h2><%= pluralize(graph.errors.count, "error") %> prohibited this graph from being saved:</h2>
 
       <ul>
@@ -13,55 +14,62 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", required: true %>
+    <div class="invalid-feedback">
+      Please provide a name for the graph.
+    </div>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :start_year, style: "display: block" %>
-    <%= form.number_field :start_year %>
+
+
+<div id="year-fields">
+  <div class="row mb-3">
+      <div class="col-md-6">
+      <%= form.label :start_year, class: "form-label" %>
+      <%= form.number_field :start_year, class: "form-control" %>
+    </div>
+      <div class="col-md-6">
+      <%= form.label :end_year, class: "form-label" %>
+      <%= form.number_field :end_year, class: "form-control" %>
+    </div>
+  </div>
+</div>
+
+
+  <div class="mb-3">
+    <%= form.label :year, class: "form-label" %>
+    <%= form.number_field :year, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :end_year, style: "display: block" %>
-    <%= form.number_field :end_year %>
+  <div class="mb-3 form-check">
+    <%= form.check_box :range, class: "form-check-input" %>
+    <%= form.label :range, id: "range-checkbox", class: "form-check-label" %>
   </div>
 
-  <div>
-    <%= form.label :year, style: "display: block" %>
-    <%= form.number_field :year %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.label :month, class: "form-label" %>
+      <%= form.number_field :month, class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= form.label :day, class: "form-label" %>
+      <%= form.number_field :day, class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= form.label :hour, class: "form-label" %>
+      <%= form.number_field :hour, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :range, style: "display: block" %>
-    <%= form.check_box :range %>
-  </div>
 
-  <div>
-    <%= form.label :month, style: "display: block" %>
-    <%= form.number_field :month %>
-  </div>
-
-  <div>
-    <%= form.label :day, style: "display: block" %>
-    <%= form.number_field :day %>
-  </div>
-
-  <div>
-    <%= form.label :hour, style: "display: block" %>
-    <%= form.number_field :hour %>
-  </div>
-
-  <div>
-    <%= form.label :independent_var, style: "display: block" %>
-    <%= form.text_field :independent_var %>
-  </div>
 
   <div>
     <%= form.label :dependent_var, style: "display: block" %>
@@ -95,23 +103,23 @@
          %>
   </div>
 
-  <div>
-    <%= form.label :function, style: "display: block" %>
-    <%= form.select :function, ["mean", "max", "min"]%>
-  </div>
+<div class="row">
+<div class="col-3">
+  <%= form.label :function, class: "form-label" %>
+  <%= form.select :function, ["mean", "max", "min"], class: "form-select" %>
+</div>
 
-  <div>
-    <%= form.label :chart_type, style: "display: block" %>
-    <%= form.select :chart_type, ["line", "scatter", "bar", "area", "pie"]
-         %>
-  </div>
+<div class="col-3">
+  <%= form.label :chart_type, class: "form-label" %>
+  <%= form.select :chart_type, ["line", "scatter", "bar", "area", "pie"], class: "form-select" %>
+</div>
 
-  <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.select :category, ["Range_across_years",
-     "Compare_one_month_across_years", "Monthly_for_one_year",
-     "Hourly_for_one_month_in_a_single_year"] %>
-  </div>
+<div class="col-6">
+  <%= form.label :category, class: "form-label" %>
+  <%= form.select :category, ["Range_across_years", "Compare_one_month_across_years", "Monthly_for_one_year", "Hourly_for_one_month_in_a_single_year"], class: "form-select" %>
+</div>
+</div>
+
 
   <div>
     <%= form.label :location, style: "display: block" %>
@@ -139,21 +147,25 @@
  %>
   </div>
 
-  <div>
-    <%= form.label :lat, style: "display: block" %>
-    <%= form.text_field :lat %>
-  </div>
+
+
+
+  <%= form.check_box :has_optional_field, data: { action: "change->example#toggleOptionalField" } %>
+  <%= form.label :has_optional_field, "Has Optional Field" %>
 
   <div>
-    <%= form.label :lon, style: "display: block" %>
-    <%= form.text_field :lon %>
-  </div>
-
-
-
-
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "btn btn-primary mt-3"%>
   </div>
 <% end %>
+</div>
+
+
+<script>
+  const yearFields = document.getElementById('year-fields');
+  console.log("BAR")
+
+  document.getElementById('range-checkbox').addEventListener('change', (event) => {
+    yearFields.style.display = event.target.checked ? 'block' : 'none';
+    console.log("FOO");
+  });
+</script>
