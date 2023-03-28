@@ -1,12 +1,19 @@
-
+<div class="blocking">
+<div id="hero">
 <div class="row">
 <div class="col-12 d-flex justify-content-center mt-5">
+
+
 <h1 style="margin-bottom: 5rem">Welcome to IdaWeather</h1>
 </div>
 </div>
 
+</div>
 
-<div class="row mt-5 ">
+
+
+<div class="row mt-3 ">
+
 <div class="col-6">
 <%= image_tag 'weather-1.jpg', width: '100%' %>
 </div>
@@ -18,7 +25,7 @@
 
 <div class="mt-4">
 
-<i class="fa-solid fa-magnifying-glass-chart  fa-2xl"></i> Query and run statistics on 13,479,035 records to create graphs.
+<i class="fa-solid fa-magnifying-glass-chart  fa-2xl"></i> Query and run statistics on 13,479,035 records.
 
 </div>
 <div class="mt-4">
@@ -42,32 +49,38 @@
 
 </div>
 
+
 <div class="row mt-5 ">
+
   <div class="col-6">
 <h2>27 Features Available in the Dataset</h2>
-<p>Our dataset contains 27 different features,
-ranging from temperature and pressure to sub-surface soil temperature and moisture levels.
+<p>The IdaWeather dataset contains 27 different features,
+ranging from temperature, pressure, and solar radiation to sub-surface soil temperature and moisture levels.
 </p>
-<ol class="list-group  mt-5">
-  <li class="list-group-item">Temperature, Dewpoint Temperature</li>
-  <li class="list-group-item">Soil Temperature Layer 1-4</li>
-  <li class="list-group-item">Volumetric Soil Water Layer 1-4</li>
-  <li class="list-group-item">Surface [Thermal, Solar, Diffuse] Radiation</li>
-  <li class="list-group-item">Relative Humidity</li>
-  <li class="list-group-item">Surface Pressure, Sea Level Pressure</li>
 
-  <li class="list-group-item">Total Cloud Cover</li>
-  <li class="list-group-item">Total Precipitation </li>
-  <li class="list-group-item">Snowfall, Snow Depth, Snow Density</li>
+<p style="color: red">Note: all values are in metric<p>
 
-  <li class="list-group-item">Wind Speed, Direction, 10m Gust, 100m Speed & Direction</li>
+<b class=" d-flex justify-content-center mt-5">Features</b>
+<ol class="list-group  mt-2">
+  <li class="list-group-item">Temperature, Dewpoint Temperature (*C)</li>
+  <li class="list-group-item">Soil Temperature Layer 1-4 (*C)</li>
+  <li class="list-group-item">Volumetric Soil Water Layer 1-4 (%)</li>
+  <li class="list-group-item">Surface [Thermal, Solar, Diffuse] Radiation (W/m^2)</li>
+  <li class="list-group-item">Relative Humidity (%)</li>
+  <li class="list-group-item">Surface Pressure, Sea Level Pressure (Pascals)</li>
+
+  <li class="list-group-item">Total Cloud Cover (%)</li>
+  <li class="list-group-item">Total Precipitation (mm)</li>
+  <li class="list-group-item">Snowfall, Snow Depth, Snow Density (mm)</li>
+
+  <li class="list-group-item">Wind Speed, Direction, 10m Gust, 100m Speed & Direction (m/s)</li>
 
 </ol>
 
 
 <div class="mt-5">
 <p>
-Layer depths (for soil temperature and moisture)
+<b class=" d-flex justify-content-center mt-5">Layer depths (for Soil Temperature and Moisture)</b>
 </p>
 <ul class="list-group">
   <li class="list-group-item">Layer 1 (0 - 7cm) - (0 - 2.75 inches)</li>
@@ -77,18 +90,16 @@ Layer depths (for soil temperature and moisture)
 </ul>
 </div>
 
-
-
- Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-  </div>
+</div>
 
   <div class="col-6">
 <%= image_tag 'weather-2.jpg', width: '100%' %>
   </div>
 
-
-
 </div>
+
+
+
 
 <div class="row mt-5">
   <div class="col-6">

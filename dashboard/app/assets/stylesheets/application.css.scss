@@ -15,3 +15,29 @@
  */
 
  @import "font-awesome";
+
+ body {
+    background-image: url('background.jpg');
+    background-size: cover;
+
+ }
+
+
+ #hero {
+    color: #000;
+ }
+
+ .blocking {
+    margin-top: 5em;
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 25px;
+
+ }
+
+
+ #first-block #second-block{
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 25px;
+ }
