@@ -94,78 +94,6 @@
     <%= form.text_area :description, class: "form-control" %>
   </div>
 
-<div class="col-6">
-  <%= form.label :category, class: "form-label" %>
-  <%= form.select :category, ["Range_across_years", "Compare_one_month_across_years", "Monthly_for_one_year", "Hourly_for_one_month_in_a_single_year"], class: "form-select" %>
-</div>
-
-
-<div id="year-fields">
-  <div class="row mb-3">
-      <div class="col-md-6">
-      <%= form.label :start_year, class: "form-label" %>
-      <%= form.number_field :start_year, class: "form-control" %>
-    </div>
-      <div class="col-md-6">
-      <%= form.label :end_year, class: "form-label" %>
-      <%= form.number_field :end_year, class: "form-control" %>
-    </div>
-  </div>
-</div>
-
-
-  <div class="mb-3">
-    <%= form.label :year, class: "form-label" %>
-    <%= form.number_field :year, class: "form-control" %>
-  </div>
-
-
-
-<div data-controller="graph_form">
- 
-  <div class="mb-3 form-check">
-    <%= form.check_box :range, class: "form-check-input" %>
-    <%= form.label :range, id: "range-checkbox", class: "form-check-label" %>
-  </div>
-
-</div>
-
-
-
-  <div class="row mb-3">
-    <div class="col">
-      <%= form.label :month, class: "form-label" %>
-      <%= form.number_field :month, class: "form-control" %>
-    </div>
-    <div class="col">
-      <%= form.label :day, class: "form-label" %>
-      <%= form.number_field :day, class: "form-control" %>
-    </div>
-    <div class="col">
-      <%= form.label :hour, class: "form-label" %>
-      <%= form.number_field :hour, class: "form-control" %>
-    </div>
-  </div>
-
-
-
-
-
-<div class="row">
-<div class="col-6">
-  <%= form.label :function, class: "form-label" %>
-  <%= form.select :function, ["mean", "max", "min"], class: "form-select" %>
-</div>
-
-<div class="col-6">
-  <%= form.label :chart_type, class: "form-label" %>
-  <%= form.select :chart_type, ["line", "scatter", "bar", "area", "pie"], class: "form-select" %>
-</div>
-</div>
-
-
-
-
 
 <div data-controller="form">
   <div class="col-6">
@@ -206,6 +134,28 @@
 
 
 </div>
+
+
+
+
+
+
+
+<div class="row">
+<div class="col-6">
+  <%= form.label :function, class: "form-label" %>
+  <%= form.select :function, ["mean", "max", "min"], class: "form-select" %>
+</div>
+
+<div class="col-6">
+  <%= form.label :chart_type, class: "form-label" %>
+  <%= form.select :chart_type, ["line", "scatter", "bar", "area", "pie"], class: "form-select" %>
+</div>
+</div>
+
+
+
+
 
 
 
