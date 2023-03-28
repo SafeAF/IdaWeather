@@ -1,2 +1,14 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+
+<!--HTML from anywhere-->
+<div data-controller="home">
+  <input data-home-target="name" type="text">
+
+  <button data-action="click->home#greet">
+    Greet
+  </button>
+
+  <span data-home-target="output">
+  </span>
+</div>

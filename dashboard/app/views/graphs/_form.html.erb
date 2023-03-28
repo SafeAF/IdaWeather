@@ -119,10 +119,18 @@
     <%= form.number_field :year, class: "form-control" %>
   </div>
 
+
+
+<div data-controller="graph_form">
+ 
   <div class="mb-3 form-check">
     <%= form.check_box :range, class: "form-check-input" %>
     <%= form.label :range, id: "range-checkbox", class: "form-check-label" %>
   </div>
+
+</div>
+
+
 
   <div class="row mb-3">
     <div class="col">
@@ -159,6 +167,37 @@
 
 
 
+<div data-controller="form">
+  <div class="col-6">
+
+<%= form.collection_select :product_type, ["foo", "bar", "baz"],
+ :to_s, :titlecase, {}, data: { action: "change->form#toggle" } %>
+
+  </div>
+
+
+<div data-form-target="startYear">
+  <%= form.label :start_year %>
+  <%= form.text_field :start_year, class: "form-control", data: { target: "form.startYear" } %>
+</div>
+
+<div data-form-target="endYear">
+  <%= form.label :end_year %>
+  <%= form.text_field :end_year, class: "form-control", data: { target: "form.endYear" } %>
+</div>
+
+<div id="yearField">
+<div data-form-target="year">
+  <%= form.label :year %>
+  <%= form.text_field :year, class: "form-control", data: { target: "form.year" } %>
+</div>
+</div>
+
+</div>
+
+
+
+
 
 
 
@@ -167,6 +206,7 @@
     <%= form.submit "Submit", class: "btn btn-primary mt-3 btn-lg"%>
     </div>
   </div>
+
 
 
 <% end %>
@@ -178,14 +218,3 @@
 
 
 
-
-
-<script>
-  const yearFields = document.getElementById('year-fields');
-  console.log("BAR")
-
-  document.getElementById('range-checkbox').addEventListener('change', (event) => {
-    yearFields.style.display = event.target.checked ? 'block' : 'none';
-    console.log("FOO");
-  });
-</script>

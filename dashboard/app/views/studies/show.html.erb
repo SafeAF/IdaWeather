@@ -30,7 +30,7 @@
               coords = JSON.parse(graph.coords)
               @foo = Vega.lite
                 .data(coords)
-                .mark(type: "bar", tooltip: true)
+                .mark(type: graph.chart_type, tooltip: true)
                 .encoding(
                   x: {field: "x", type: "nominal"},
                   y: {field: "y", type: "quantitative"}
