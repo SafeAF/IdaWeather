@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :graphs
   resources :studies
 
-  
+  get '/about', to: 'about#index'
 
   # Defines the root path route ("/")
   # root "articles#index"
