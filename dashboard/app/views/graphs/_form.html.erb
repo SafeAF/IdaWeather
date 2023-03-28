@@ -170,20 +170,24 @@
 <div data-controller="form">
   <div class="col-6">
 
-<%= form.collection_select :product_type, ["foo", "bar", "baz"],
- :to_s, :titlecase, {}, data: { action: "change->form#toggle" } %>
+
+<%= form.collection_select :category, ["Range_across_years", "Compare_one_month_across_years", "Monthly_for_one_year", "Hourly_for_one_month_in_a_single_year"],
+ :to_s, :titlecase, {}, data: { action: "change->form#toggle" }, id: "foo" %>
 
   </div>
 
-
+<div id="startYearField">
 <div data-form-target="startYear">
   <%= form.label :start_year %>
   <%= form.text_field :start_year, class: "form-control", data: { target: "form.startYear" } %>
 </div>
+</div>
 
+<div id="endYearField">
 <div data-form-target="endYear">
   <%= form.label :end_year %>
   <%= form.text_field :end_year, class: "form-control", data: { target: "form.endYear" } %>
+</div>
 </div>
 
 <div id="yearField">
@@ -192,6 +196,14 @@
   <%= form.text_field :year, class: "form-control", data: { target: "form.year" } %>
 </div>
 </div>
+
+<div id="monthField">
+<div data-form-target="month">
+  <%= form.label :month %>
+  <%= form.text_field :month, class: "form-control", data: { target: "form.month" } %>
+</div>
+</div>
+
 
 </div>
 
