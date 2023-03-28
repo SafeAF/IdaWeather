@@ -1,13 +1,35 @@
-<div id="<%= dom_id study %>">
-  <p>
-    <strong>Name:</strong>
-    <%= study.name %>
-  </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= study.description %>
-  </p>
+<div id="<%= dom_id study %>">
+  <div class="row">
+      <div class="col-4">
+           
+
+  
+        <%= 
+        coords = JSON.parse(study.graphs.first.coords)
+        @foo = Vega.lite
+          .data(coords)
+          .mark(type: study.graphs.first.chart_type, tooltip: true)
+          .encoding(
+            x: {field: "x", type: "nominal"},
+            y: {field: "y", type: "quantitative"}
+          )
+          .height(100)
+          .width(250)
+        %>
+    </div>
+
+
+
+  <div class="col-8">
+
+      <h3>      <%= link_to study.name, study %></h3>
+
+      <%= study.description %>
+
+  </div>
+
+</div>
 
 
 
