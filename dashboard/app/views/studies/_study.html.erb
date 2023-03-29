@@ -7,14 +7,12 @@
   
         <%= 
           if study.graphs.present?
-
-          coords = JSON.parse(study.graphs.first.coords)
-          chart_type = study.graphs.first.chart_type
-
-        else
-          coords =  [{x: 1, y:2}, {x:2, y:5}, {x:3, y:7}]
-          chart_type = "bar"
-        end
+            coords = JSON.parse(study.graphs.first.coords)
+            chart_type = study.graphs.first.chart_type
+          else
+            coords =  [{x: 1, y:2}, {x:2, y:5}, {x:3, y:7}]
+            chart_type = "bar"
+          end
         
         @foo = Vega.lite
           .data(coords)

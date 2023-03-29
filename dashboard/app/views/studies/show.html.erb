@@ -77,6 +77,8 @@
   
       <% else %>
         <p>No graphs found.</p>
+
+        <%= link_to 'Create a New Graph', new_study_graph_path(@study), title: 'New Graph' %>
     <% end %>
 
 
