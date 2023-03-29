@@ -31,16 +31,34 @@ class GraphsController < ApplicationController
   end
 
 
+
+  # begin
+  #   graph.coords = get_coordinates_from_api
+  #   graph.save!
+  # rescue StandardError => e
+  #   puts "Error occurred: #{e}"
+  #   graph.coords = [{x: 1, y: 2}, {x: 2, y: 5}, {x: 3, y: 6}]
+  #   graph.save!
+  # end
+  
   
   
   def create
     @graph = @study.graphs.new(graph_params)
     @graph.save
+    begin
     json_graph = @graph.to_json
     uri = URI(@@api)
     res = Net::HTTP.post_form(uri, {'graph' => json_graph})
     @graph.coords = res.body #store the coords as JSON dont parse until display
     @graph.save
+
+    rescue StandardError => error
+      @graph.coords = [{x: 1, y: 2}, {x: 2, y:5}, {x:3, y:6}]
+      @graph.save!
+      flash[:error] = "Error: #{error}. Failed to retrieve coordinates. Please edit and try again."
+    end
+
 
     if @graph.save
       redirect_to study_path(@study), notice: 'Graph was successfully created.'
