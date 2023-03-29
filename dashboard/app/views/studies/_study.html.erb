@@ -6,10 +6,19 @@
 
   
         <%= 
-        coords = JSON.parse(study.graphs.first.coords)
+          if study.graphs.present?
+
+          coords = JSON.parse(study.graphs.first.coords)
+          chart_type = study.graphs.first.chart_type
+
+        else
+          coords =  [{x: 1, y:2}, {x:2, y:5}, {x:3, y:7}]
+          chart_type = "bar"
+        end
+        
         @foo = Vega.lite
           .data(coords)
-          .mark(type: study.graphs.first.chart_type, tooltip: true)
+          .mark(type: chart_type, tooltip: true)
           .encoding(
             x: {field: "x", type: "nominal"},
             y: {field: "y", type: "quantitative"}
