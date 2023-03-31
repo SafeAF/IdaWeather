@@ -8,13 +8,22 @@
         <%= render 'study_toolbar' %>
       </div>
     </div>
-
-    <div class="row mt-5">
-      <div class="col-12 d-flex justify-content-center">
-        <h1><%= @study.name %></h1>
-        <p><%= @study.description %></p>
-      </div>
   </div>
+
+
+  <div class="row mt-5">
+    <div class="col-12 d-flex justify-content-center">
+      <h1><%= @study.name %></h1>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col d-flex justify-content-center">
+      <%= @study.description %>
+    </div>
+  </div>
+
+
 
 
   <% if @study.graphs.any? %>
