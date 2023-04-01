@@ -41,6 +41,18 @@ class GraphsController < ApplicationController
   #   graph.save!
   # end
   
+  # def create
+  #   @graph = @study.graphs.new(graph_params)
+  #   @graph.coords =  JSON.generate [{x: 1, y: 2}, {x: 2, y:5}, {x:3, y:6}]
+  #   if @graph.save
+  #     # Enqueue the GraphWorker job
+  #     GraphWorker.perform_async(@graph.id)
+  #     redirect_to study_path(@study), notice: 'Graph was successfully created. Processing coordinates in the background.'
+  #   else
+  #     format.html { render :new, status: :unprocessable_entity }
+  #     format.json { render json: @graph.errors, status: :unprocessable_entity }
+  #   end
+  # end
   
   
   def create
