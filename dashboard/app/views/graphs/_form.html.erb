@@ -15,6 +15,12 @@
     </div>
   <% end %>
 
+<div class="row mb-5">
+  <div class="col">
+    Note: It takes around 60 seconds to process, please allow it time to complete.
+  </div>
+</div>
+
 
   <div class="mb-3">
     <%= form.label :name, class: "form-label" %>
@@ -106,28 +112,28 @@
 
     <div id="startYearField">
       <div data-form-target="startYear">
-        <%= form.label :start_year %>
+        <%= form.label "Start Year (1950-2022)" %>
         <%= form.text_field :start_year, class: "form-control", data: { target: "form.startYear" } %>
       </div>
     </div>
 
     <div id="endYearField">
       <div data-form-target="endYear">
-        <%= form.label :end_year %>
+        <%= form.label "End Year (1950-2022)" %>
         <%= form.text_field :end_year, class: "form-control", data: { target: "form.endYear" } %>
       </div>
     </div>
 
     <div id="yearField">
       <div data-form-target="year">
-        <%= form.label :year %>
+        <%= form.label "Year (1950-2022)" %>
         <%= form.text_field :year, class: "form-control", data: { target: "form.year" } %>
       </div>
     </div>
 
     <div id="monthField">
       <div data-form-target="month">
-        <%= form.label :month %>
+        <%= form.label "Month (1-12)" %>
         <%= form.text_field :month, class: "form-control", data: { target: "form.month" } %>
       </div>
     </div>
