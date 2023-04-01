@@ -66,7 +66,7 @@ class GraphsController < ApplicationController
     @graph.save
 
     rescue StandardError => error
-      @graph.coords = [{x: 1, y: 2}, {x: 2, y:5}, {x:3, y:6}]
+      @graph.coords = JSON.generate [{x: 1, y: 2}, {x: 2, y:5}, {x:3, y:6}]
       @graph.save!
       flash[:error] = "Error: #{error}. Failed to retrieve coordinates. Please edit and try again."
     end
